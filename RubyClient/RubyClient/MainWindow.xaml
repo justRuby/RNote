@@ -1,0 +1,84 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RubyClient"
+        xmlns:CustomControls="clr-namespace:RubyClient.CustomControls" x:Class="RubyClient.MainWindow"
+        mc:Ignorable="d"
+        Title="Notes" Height="600" Width="400" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid x:Name="MainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="White" Panel.ZIndex="1">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="8" Color="#FF6A6A6A" ShadowDepth="0" Opacity="0.6"/>
+            </Grid.Effect>
+
+        </Grid>
+        
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="LeftMiddleGrid" Grid.Column="0" Background="White" Panel.ZIndex="1">
+                <StackPanel.Effect>
+                    <DropShadowEffect ShadowDepth="0" Color="#FF6A6A6A" BlurRadius="8" Opacity="0.6"/>
+                </StackPanel.Effect>
+                <Button x:Name="GetDateButton" Height="30" VerticalAlignment="Top" Width="30" Margin="0,10,0,0" BorderBrush="{x:Null}" Click="GetDateButton_Click"/>
+                <Button Height="30" VerticalAlignment="Top" Width="30" Margin="0,10,0,0" BorderBrush="{x:Null}"/>
+                <Button Height="30" VerticalAlignment="Top" Width="30" Margin="0,10,0,0" BorderBrush="{x:Null}"/>
+            </StackPanel>
+
+            <Grid x:Name="ContentGrid" Grid.Column="1">
+
+                <Grid x:Name="SelectedNoteGrid" Grid.Row="1" Background="#FFFAFAFA" Visibility="Hidden">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0" Margin="10,5,10,0" Text="{Binding Headline}" FontWeight="Medium" Foreground="#FF383838" BorderBrush="#FFD2DCDC"/>
+                    <TextBox Grid.Row="1" Margin="10,5" Text="{Binding Description}" FontSize="10" Foreground="#FF6A6A6A" FontWeight="Medium" BorderBrush="#FFD2DCDC" TextWrapping="Wrap" AcceptsReturn="True"/>
+                    <TextBlock Grid.Row="2" Margin="10,0,10,5" Text="{Binding Date}" Foreground="#FF747474" FontSize="10" Background="White"/>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
+                        <Button x:Name="ReturnToListButton" Height="40" Width="40" Margin="10,0,0,0" BorderBrush="{x:Null}" Background="#FF8AFF67" Click="ReturnToListButton_Click"/>
+                    </StackPanel>
+                </Grid>
+                
+                <ScrollViewer x:Name="scrollViewer" Grid.Row="1" PanningMode="VerticalOnly" PanningDeceleration="0.1" Background="#FFFAFAFA" Visibility="Visible">
+                    <StackPanel>
+                        <StackPanel Background="#FFFAFAFA" Orientation="Horizontal" Height="40">
+                            <Image Width="24" Height="24" HorizontalAlignment="Left" Margin="20,0,0,0" Source="Images/SearchV1.png" RenderOptions.BitmapScalingMode="Fant" RenderOptions.EdgeMode="Aliased"/>
+                            <TextBox x:Name="searchTextBox" Height="24" Width="276" HorizontalAlignment="Left" Margin="0,0,20,0" BorderBrush="#FFD2DCDC" TextChanged="SearchTextBox_TextChanged"/>
+                        </StackPanel>
+                        <WrapPanel x:Name="RightMiddleWrapPanel" Margin="0,10,0,0" HorizontalAlignment="Center" ItemHeight="180">
+
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Grid x:Name="NotHaveNotesForViewGrid" Grid.Row="1" Visibility="Hidden">
+                    <TextBlock Text="Нету записей!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="#FF606060" FontWeight="Medium"/>
+                </Grid>
+
+                <Button x:Name="AddNewNoteButton" Grid.Row="1" Width="40" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,25,25" BorderBrush="{x:Null}" Style="{DynamicResource ShadowEffectButton}" Background="{x:Null}" Visibility="Visible" Click="AddNewNoteButton_Click">
+                    <Image Source="Images/AddV7.png" RenderOptions.BitmapScalingMode="Fant" RenderOptions.EdgeMode="Aliased"/>
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

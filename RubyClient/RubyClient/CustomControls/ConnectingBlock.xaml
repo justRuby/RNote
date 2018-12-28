@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="RubyClient.CustomControls.ConnectingBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RubyClient.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="354" Width="354" Height="570">
+
+    <Grid Background="#FFFAFAFA">
+        <local:AnimatedLoadingBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" RenderTransformOrigin="0.5,0.5">
+            <local:AnimatedLoadingBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local:AnimatedLoadingBlock.RenderTransform>
+        </local:AnimatedLoadingBlock>
+
+        <TextBlock x:Name="ConnectionStatusTextBlock" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding TextString}" Margin="0,0,0,160" Foreground="#FF4C4C4C"/>
+
+    </Grid>
+</UserControl>
